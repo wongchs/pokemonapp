@@ -40,6 +40,17 @@ button {
   border-radius: 5px;
   color: #000;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffa500;
+  color: #fff;
+}
+
+button:focus {
+  outline: 2px solid #ffcc00;
+  outline-offset: 2px;
 }
 
 .pokemon-card {
@@ -76,6 +87,12 @@ button {
   color: #000;
   cursor: pointer;
   width: 200px;
+  transition: background-color 0.3s ease;
+}
+
+.pokemon-card button:hover {
+  background-color: #ffa500;
+  color: #fff;
 }
 
 .pokemon-details {
