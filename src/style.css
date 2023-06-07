@@ -80,6 +80,7 @@ button:focus {
 }
 
 .pokemon-card button {
+  margin: 0;
   padding: 10px 20px;
   font-size: 16px;
   background-color: #ffcc00;
@@ -131,7 +132,7 @@ button:focus {
 }
 
 .type-box {
-  width: 120px;
+  width: 80px;
   background-color: #9c7200;
   color: #fff;
   padding: 0.5rem;
