@@ -34,6 +34,7 @@ button {
   width: 8rem; 
   height: 40px; 
   font-size: 16px;
+  font-weight: 700;
   background-color: #ffcc00;
   border: none;
   border-radius: 5px;
@@ -41,16 +42,11 @@ button {
   cursor: pointer;
 }
 
-
 .pokemon-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
-}
-
-.pokemon-card h2 {
-  margin-top: 0;
 }
 
 .pokemon-card img {
@@ -79,60 +75,106 @@ button {
   border: none;
   color: #000;
   cursor: pointer;
+  width: 200px;
 }
 
 .pokemon-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-top: 20px;
 }
 
-.pokemon-details h2 {
-  margin-top: 0;
+.pokemon-details-content {
+  display: flex;
 }
 
-.pokemon-details img {
-  width: 200px;
-  height: 200px;
-  margin-bottom: 10px;
+.pokemon-sprite {
+  width: 210px;
+  height: 280px;
 }
 
-.pokemon-details strong {
+.sprite-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.type-boxes {
+  display: flex;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+.type-box {
+  width: 120px;
+  background-color: #9c7200;
+  color: #fff;
+  padding: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.type-container,
+.base-stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-details-content strong {
   font-weight: bold;
 }
 
-.pokemon-details ul {
+.pokemon-details-content ul {
   padding-left: 0;
 }
 
-.pokemon-details li {
-  list-style-type: none;
-}
-
-.pokemon-details table {
+.pokemon-details-content table {
+  width: 200px;
   margin: auto;
-  width: 20%;
   border-collapse: collapse;
   margin-top: 1rem;
 }
 
-.pokemon-details th,
-.pokemon-details td {
+.pokemon-details-content th,
+.pokemon-details-content td {
   padding: 0.5rem;
   text-align: left;
   border: 1px solid #ddd;
 }
 
-.pokemon-details th {
+.pokemon-details-content th {
   font-weight: bold;
 }
 
-.pokemon-details tbody tr:nth-child(even) {
+.pokemon-details-content tbody tr:nth-child(even) {
   background-color: #323232;
 }
 
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .navButton {
-  width: 20%;
-  margin: 1rem;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ffcc00;
+  border: none;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .pokedex-number {

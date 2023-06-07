@@ -108,18 +108,20 @@ const Pokedex = () => {
       </div>
       {!showDetails && searchResult && (
         <div className="pokemon-card">
-          <h2>{searchResult.name}</h2>
-          <img src={searchResult.sprite} alt={searchResult.name} />
-          <div>
-            <strong>Type(s):</strong>
-            <ul>
-              {searchResult.types.map((type) => (
-                <li key={type}>{type}</li>
-              ))}
-            </ul>
+        <h2>{searchResult.name}</h2>
+        <img src={searchResult.sprite} alt={searchResult.name} />
+        <div>
+          <strong>Type(s):</strong>
+          <div className="type-boxes">
+            {searchResult.types.map((type) => (
+              <div key={type} className="type-box">
+                {type}
+              </div>
+            ))}
           </div>
-          <button onClick={handleViewDetails}>View Details</button>
         </div>
+        <button onClick={handleViewDetails}>View Details</button>
+      </div>
       )}
       {pokemonNotFound && isSearchPerformed && <p className='error-message'>Pokemon Not Found</p>}
       {showDetails && (
