@@ -114,6 +114,7 @@ button:focus {
 
 .pokemon-details-content {
   display: flex;
+  align-items: center;
 }
 
 .pokemon-sprite {
@@ -131,7 +132,7 @@ button:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 0 40px 20px 0;
 }
 
 .type-boxes {
