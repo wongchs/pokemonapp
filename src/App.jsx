@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SearchBar from './components/Searchbar';
+import SearchBar from './components/SearchBar';
 import PokemonCard from './components/PokemonCard';
 import ErrorNotification from './components/ErrorNotification';
 import PokemonDetails from './components/PokemonDetails';
