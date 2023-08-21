@@ -112,7 +112,7 @@ const Pokedex = () => {
         />
       )}
       <ErrorNotification pokemonNotFound={pokemonNotFound} isSearchPerformed={isSearchPerformed} />
-      {pokemonNotFound && isSearchPerformed && <p className='error-message'>Pokemon Not Found</p>}
+      {pokemonNotFound && isSearchPerformed}
       {showDetails && (
         <PokemonDetails
           {...searchResult}
