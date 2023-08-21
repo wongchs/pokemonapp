@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import PokemonDetails from './PokemonDetails';
+import SearchBar from './components/Searchbar';
+import PokemonCard from './components/PokemonCard';
+import ErrorNotification from './components/ErrorNotification';
+import PokemonDetails from './components/PokemonDetails';
 import './style.css';
 
 const Pokedex = () => {
@@ -94,35 +97,21 @@ const Pokedex = () => {
   return (
     <div className="pokedex">
       <h1>Pokedex</h1>
-      <div className="search-container">
-        {!showDetails && (
-          <>
-            <input type="text" value={searchTerm} onChange={handleInputChange} placeholder="Search Pokemon" />
-            <button onClick={getCurrentPokemon}>Search</button>
-            <button onClick={handleRandomPokemon}>Random</button>
-          </>
-        )}
-        {showDetails && (
-          <button onClick={handleGoBack}>Back</button>
-        )}
-      </div>
+      <SearchBar
+        searchTerm={searchTerm}
+        handleInputChange={handleInputChange}
+        getCurrentPokemon={getCurrentPokemon}
+        handleRandomPokemon={handleRandomPokemon}
+        showDetails={showDetails}
+        handleGoBack={handleGoBack}
+      />
       {!showDetails && searchResult && (
-        <div className="pokemon-card">
-        <h2>{searchResult.name}</h2>
-        <img src={searchResult.sprite} alt={searchResult.name} />
-        <div>
-          <strong>Type(s):</strong>
-          <div className="type-boxes">
-            {searchResult.types.map((type) => (
-              <div key={type} className="type-box">
-                {type}
-              </div>
-            ))}
-          </div>
-        </div>
-        <button onClick={handleViewDetails}>View Details</button>
-      </div>
+        <PokemonCard
+          searchResult={searchResult}
+          handleViewDetails={handleViewDetails}
+        />
       )}
+      <ErrorNotification pokemonNotFound={pokemonNotFound} isSearchPerformed={isSearchPerformed} />
       {pokemonNotFound && isSearchPerformed && <p className='error-message'>Pokemon Not Found</p>}
       {showDetails && (
         <PokemonDetails
