@@ -1,12 +1,13 @@
-import axios from "axios";
-import SearchBar from "./components/SearchBar";
-import PokemonCard from "./components/PokemonCard";
-import ErrorNotification from "./components/ErrorNotification";
-import PokemonDetails from "./components/PokemonDetails";
-import "./style.css";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import SearchBar from './components/SearchBar';
+import PokemonCard from './components/PokemonCard';
+import ErrorNotification from './components/ErrorNotification';
+import PokemonDetails from './components/PokemonDetails';
+import './style.css';
 
 const Pokedex = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [searchResult, setSearchResult] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
   const [pokemonList, setPokemonList] = useState([]);
@@ -17,13 +18,11 @@ const Pokedex = () => {
   useEffect(() => {
     const fetchPokemonList = async () => {
       try {
-        const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon?limit=1000"
-        );
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=1000');
         const { results } = response.data;
         setPokemonList(results);
       } catch (error) {
-        console.log("Error:", error);
+        console.log('Error:', error);
       }
     };
 
@@ -44,18 +43,12 @@ const Pokedex = () => {
 
   const getCurrentPokemon = async () => {
     try {
-      const response = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${searchTerm.toLowerCase()}`
-      );
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${searchTerm.toLowerCase()}`);
       const { name, id, sprites, types, stats } = response.data;
       const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
-      const elementTypes = types.map(
-        (type) =>
-          type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)
-      );
+      const elementTypes = types.map((type) => type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1));
       const baseStats = stats.reduce((acc, stat) => {
-        acc[stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)] =
-          stat.base_stat;
+        acc[stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)] = stat.base_stat;
         return acc;
       }, {});
       const pokemonData = {
@@ -63,14 +56,14 @@ const Pokedex = () => {
         sprite: sprites.front_default,
         types: elementTypes,
         baseStats,
-        pokedexNumber: id,
+        pokedexNumber: id
       };
       setCurrentPokemonIndex(id - 1);
       setSearchResult(pokemonData);
       setPokemonNotFound(false);
       setIsSearchPerformed(true);
     } catch (error) {
-      console.log("Error:", error);
+      console.log('Error:', error);
       setSearchResult(null);
       setPokemonNotFound(true);
       setIsSearchPerformed(true);
@@ -90,8 +83,7 @@ const Pokedex = () => {
   };
 
   const handlePrevious = () => {
-    const previousIndex =
-      (currentPokemonIndex - 1 + pokemonList.length) % pokemonList.length;
+    const previousIndex = (currentPokemonIndex - 1 + pokemonList.length) % pokemonList.length;
     setSearchTerm(pokemonList[previousIndex].name);
     setCurrentPokemonIndex(previousIndex);
   };
@@ -119,10 +111,7 @@ const Pokedex = () => {
           handleViewDetails={handleViewDetails}
         />
       )}
-      <ErrorNotification
-        pokemonNotFound={pokemonNotFound}
-        isSearchPerformed={isSearchPerformed}
-      />
+      <ErrorNotification pokemonNotFound={pokemonNotFound} isSearchPerformed={isSearchPerformed} />
       {pokemonNotFound && isSearchPerformed}
       {showDetails && (
         <PokemonDetails
