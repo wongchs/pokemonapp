@@ -1,9 +1,17 @@
-import React from 'react';
-
-const PokemonDetails = ({ name, pokedexNumber, types, sprite, baseStats, onNext, onPrevious }) => (
+const PokemonDetails = ({
+  name,
+  pokedexNumber,
+  types,
+  sprite,
+  baseStats,
+  onNext,
+  onPrevious,
+}) => (
   <div className="pokemon-details">
     <div className="pokemon-details-header">
-      <h2>{name} - <span className="pokedex-number">#{pokedexNumber}</span></h2>
+      <h2>
+        {name} - <span className="pokedex-number">#{pokedexNumber}</span>
+      </h2>
     </div>
     <div className="pokemon-details-content">
       <div className="sprite-container">
@@ -42,8 +50,12 @@ const PokemonDetails = ({ name, pokedexNumber, types, sprite, baseStats, onNext,
       </div>
     </div>
     <div className="navigation-buttons">
-      <button onClick={onPrevious} className="navButton">Previous</button>
-      <button onClick={onNext} className="navButton">Next</button>
+      <button onClick={onPrevious} className="navButton">
+        Previous
+      </button>
+      <button onClick={onNext} className="navButton">
+        Next
+      </button>
     </div>
   </div>
 );
